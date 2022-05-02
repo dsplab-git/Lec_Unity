@@ -27,4 +27,12 @@ public class movecube : MonoBehaviour
 
         transform.position = startPos;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("WALL"))
+        {
+            Debug.Log("Collsion");
+        }
+    }
 }
