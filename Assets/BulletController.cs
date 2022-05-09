@@ -13,10 +13,10 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            Shoot(new Vector3(0,0,-20));
-        }
+        //if(Input.GetMouseButtonDown(0))
+        //{
+        //    Shoot(new Vector3(0,0,-500));
+        //}
     }
     public void Shoot(Vector3 dir)
     {
@@ -25,9 +25,11 @@ public class BulletController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag == "WALL")
+        if(collision.collider.tag == "ENEMY")
         {
-            Destroy(gameObject, 0.2f);
+            GameObject manager = GameObject.Find("ScoreManager");
+            manager.GetComponent<ScoreManager>().IncScore();
+            Destroy(gameObject, 0.01f);
         }
     }
 }
